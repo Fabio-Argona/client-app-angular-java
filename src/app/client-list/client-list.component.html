@@ -1,0 +1,59 @@
+
+<div class="container-fluid">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-lg-4 col-md-6 col-sm-8 d-flex align-items-center m-4">
+      <img src="../../assets/android-chrome-192x192.png" alt="logo" style="width: 30px;">
+      <h1 class="text-center px-2 mb-6"> Client List</h1>
+      <div class="text-end" routerLink="create">
+        <button class="btn btn-primary">
+           Create Client
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Cel</th>
+            <th>CPF</th>
+            <th>Registro do Usuário</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for(client of clients; track client.id){
+          <tr ng-repeat="client in clients track by client.id" ng-class="getColorClass($index)">
+            <td>{{ client.id }}</td>
+            <td>{{ client.name }}</td>
+            <td>{{ client.email }}</td>
+            <td>{{ client.cel }}</td>
+            <td>{{ client.cpf }}</td>
+            <td>{{ client.registryUser }}</td>
+          </tr>
+        }
+        </tbody>
+      </table>
+      <div>
+        <button type="button" class="btn btn-primary btn-sm"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-left" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/>
+          <path fill-rule="evenodd" d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/>
+        </svg></button>
+        
+        <button type="button" class="btn btn-primary btn-sm"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708"/>
+          <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708"/>
+        </svg></button>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
