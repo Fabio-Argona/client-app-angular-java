@@ -1,39 +1,61 @@
-<h2 class="m-5">Create Client</h2>
-
+<div class="container-fluid">
+  <nav class="navbar">
+    <div class="row justify-content-center align-items-center">
+      <div class="d-flex align-items-center m-4">
+        <img src="../../assets/android-chrome-192x192.png" alt="logo" style="width: 30px;">
+        <h1 class="text-center px-2">
+           @if(client) {
+            Update
+           } @else {
+            Create
+           } Client
+        </h1>
+      </div>
+    </div>
+  </nav>
+</div>
+<div class="text-danger text-end m-3">
+  @if(client) {    
+   } @else {
+    <p>* Required field</p>
+   } 
+</div>
 <div class="row row-cols-8 justify-content-center">
-  <form [formGroup]="form" (ngSubmit)="create()">
-    <div class="mb-3">
-      <label for="name">Name</label>
-      <input id="name" type="text" class="form-control" formControlName="name">
-    </div>
-
-    <div class="mb-3">
-      <label for="email">Address Email</label>
-      <input id="email" type="email" class="form-control" formControlName="email">
-    </div>
-
-    <div class="mb-3">
-      <label for="cel">Cel</label>
-      <input id="cel" type="text" class="form-control" formControlName="cel">
-    </div>
-
-    <div class="mb-3">
-      <label for="cpf">CPF</label>
-      <input id="cpf" type="text" class="form-control" formControlName="cpf">
-    </div>
-
-    <div class="mb-3">
-      <label for="registryUser">Register User</label>
-      <input id="registryUser" type="text" class="form-control" formControlName="registryUser">
-    </div>
-
-    <div class="text-end">
-      <button type="button" class="btn btn-ligth" routerLink="/">
-        Cancel
-      </button>
-      <button class="btn btn-primary ms-2" type="submit">
-        Create Client
-      </button>
-    </div>
-  </form>
+  @if(form) {
+    <form [formGroup]="form" (ngSubmit)="save()">
+      <div class="mb-3">
+        <label for="name">Name<span class="text-danger">@if(client){ } @else { * } </span></label>
+        <input id="name" type="text" class="form-control" formControlName="name">
+      </div>
+      <div class="mb-3">
+        <label for="email">Address Email<span class="text-danger">@if(client){ } @else { * } </span></label>
+        <input id="email" type="email" class="form-control" formControlName="email">
+      </div>
+      <div class="mb-3">
+        <label for="cel">Cel<span class="text-danger">@if(client){ } @else { * } </span></label>
+        <input id="cel" type="text" class="form-control" formControlName="cel">
+      </div>
+      <div class="mb-3">
+        <label for="cpf">CPF<span class="text-danger">@if(client){ } @else { * } </span></label>
+        <input id="cpf" type="text" class="form-control" formControlName="cpf">
+      </div>
+      <div class="mb-3">
+        <label for="registryUser">Register User<span class="text-danger">@if(client){ } @else { * } </span></label>
+        <input id="registryUser" type="text" class="form-control" formControlName="registryUser">
+      </div>
+      <div class="text-end">
+        <button type="button" class="btn btn-ligth" routerLink="/">
+          Cancel
+        </button>
+        <button class="btn btn-primary ms-2" type="submit">
+          @if(client) {
+            Updade
+           } @else {
+            Create
+           } Client
+        </button>
+      </div>
+    </form>
+  }
+  
 </div>

@@ -2,6 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { ClientService } from '../services/client.service';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { Client } from '../model/client.interface';
 // import { DatePipe } from '@angular/common';
 
 @Component({
@@ -13,20 +14,30 @@ import { ReactiveFormsModule } from '@angular/forms';
   styleUrl: './client-list.component.css'
 })
 export default class ClientListComponent implements OnInit {
-  private ClientService = inject(ClientService);
+  private clientService = inject(ClientService);
 
-  clients: any = [];
-page: any;
-by: any;
+  clients: Client[] = [];
 
 
-  ngOnInit(): void {
-    this.ClientService.list()
-      .subscribe((clients : any) => {
+  ngOnInit(): any {
+    this.loadAll();
+  }
+
+  loadAll(){
+    this.clientService.list()
+      .subscribe(clients => {
         this.clients = clients;
-
-
       })
   }
-}
 
+  deleteClient(client: Client) {
+    this.clientService.delete(client.id)
+      .subscribe(() => {
+        this.loadAll();
+      });
+  }
+
+ 
+
+  
+}
